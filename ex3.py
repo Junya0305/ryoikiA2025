@@ -4,19 +4,17 @@ from ultralytics import YOLO
 
 model = YOLO("yolov8x.pt")
 
-results = model.predict("barcapic.png", conf=0.1)
+# personのみ検出する
+results = model.predict("barcapic.png", conf=0.1, classes=[0])
 
 # 入力画像
 img = results[0].orig_img
 
-# 認識した物体領域を取得する．
+# 認識した物体領域を取得する
 boxes = results[0].boxes
 
-
 for box in boxes:
-    # 物体領域の始点xy座標を得る．
     xy1 = box.data[0][0:2]
-    # 物体領域の終点xy座標を得る．
     xy2 = box.data[0][2:4]
     cv2.rectangle(
         img,
@@ -29,4 +27,3 @@ for box in boxes:
 cv2.imwrite("out.png", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
