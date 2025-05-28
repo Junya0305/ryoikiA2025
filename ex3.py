@@ -29,3 +29,4 @@ for box in boxes:
 cv2.imwrite("out.png", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
