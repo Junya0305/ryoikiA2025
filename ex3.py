@@ -4,7 +4,7 @@ from ultralytics import YOLO
 
 model = YOLO("yolov8x.pt")
 
-results = model.predict("barcapicture.png", conf=0.1)
+results = model.predict("barcapic.png", conf=0.1)
 
 # 入力画像
 img = results[0].orig_img
